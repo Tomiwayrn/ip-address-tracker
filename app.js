@@ -7,7 +7,7 @@ const zone = document.querySelector('#location');
 const time = document.querySelector('#utc');
 const isp = document.querySelector('#isp');
 
-var key = config.key;
+
 
 const bypassCors = 'https://cors.anywhere.heroku.com/';
 const url = 'https://geo.ipify.org/api';
