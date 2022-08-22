@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
+
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    font-size: 18px;
+ font-family: 'Rubik',  sans-serif; 
+
+}
+
+header {
+    color: white;
+    background: url('./images/pattern-bg.png') top  right no-repeat  ;
+    width: 100vw;
+    height: 31vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 1px 3px  hsla(0, 0%, 17%, .9);
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#input {
+    padding: 20px 15px;
+    width: 60%;
+    margin-right: 0 auto;
+    max-width: 800px;
+    font-family: inherit;
+    border: none;
+    border-radius: 15px 0px 0px 15px;
+
+
+}
+
+#input:focus{
+    outline: none;
+}
+
+.btn {
+    border: none;
+    background: none;
+    background: hsl(0, 0%, 17%);
+    padding: 20px 23px;
+    border-radius: 0px 15px 15px 0px;
+    transform: translateX(-10%);
+}
+
+.btn:hover {
+    cursor: pointer;
+    opacity: .6;
+}
+
+.user-info {
+    position: absolute;
+    top: 140px;
+    left: 50%;
+    padding-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-50%, 0%);
+    background: white;
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 20px;
+    box-shadow: 10px 20px 30px  hsla(0, 0%, 17%, .1);
+}
+
+.container > h3 {
+    margin-top: .1rem;
+    margin-bottom: 0rem;
+    font-weight: 500;
+}
+
+#map {
+    z-index: -1;
+}
+
+.container > h6 {
+    color: hsl(0, 0%, 59%);
+    margin: .7rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+#map{
+    height: 65vh;
+    width: 100vw;
+}
+
+@media screen and (min-width:768px) {
+    
+    header
+    {
+        background: url('./images/pattern-bg.png')  no-repeat  ;
+        background-size: 100% 100%;
+    }
+
+    #input{
+        width: 45%;
+    }
+
+    .user-info{
+        width: 74%;
+        top: 180px;
+        flex-direction: row;
+        justify-content: center;
+        justify-content: space-around;
+        padding-top: 1.2rem;
+        padding-bottom: 1.3rem;
+        
+    }
+
+    .container{
+        text-align: left;
+        border-left:  1px solid rgb(214, 214, 214);
+        padding-left: 1rem;
+    }
+
+    .container > h5 {
+        margin-left: 0;
+    }
+    
+    
+}
