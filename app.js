@@ -6,12 +6,10 @@ const ip = document.querySelector('#ip');
 const zone = document.querySelector('#location');
 const time = document.querySelector('#utc');
 const isp = document.querySelector('#isp');
+const form = document.querySelector('form');
 
-const headersOption = {
-        headers: {
-            'Access-Control-Allow-Origin': '*  '
-        }
-}
+let userIp = '192.212.174.101';
+let url = `"http://ipwho.is/${userIp}"`;
 
 
 //initialize map
@@ -30,15 +28,70 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 map.on('click', onMapClick);
 
-  fetch('http://ipwho.is/8.8.4.4')
+function fetchIp(url){
+  fetch(url)
     .then(res => res.json())
     .then(data => {
             ip.innerText = data.ip
             zone.innerText = data.city+ ',' + ' ' + data.region_code + ' ' + data.postal
             time.innerText = data.timezone.utc
             isp.innerText = data.connection.org
-            console.log(data)
             map.setView([data.latitude, data.longitude])
-          marker =  L.marker([data.latitude, data.longitude]).addTo(map)
+           L.marker([data.latitude, data.longitude]).addTo(map)
+           input.value = ''
 
-    }).catch(error => alert('Oops! Error Occured Try Again'))
+    })
+     .catch(error => setError(input, 'Oops! Error Occured Try Again'))
+};
+
+// Load Defalut ip onLoad
+
+window.addEventListener('DOMContentLoaded', ()=>{
+    fetchIp(url)
+})
+
+
+     
+form.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    if(input.value === ''){
+        setError(input, 'cant be blank')
+    }
+
+    else if(ipAddressCheck(input)){
+      userIp =  input.value
+       fetchIp(userIp) 
+      
+    }
+    
+
+})
+
+    // error handler function
+   function setError(input, message){
+      const small = input.parentElement.lastElementChild;
+
+      small.innerText = message
+      input.style.border = '1px solid red'
+
+      setTimeout(()=>{
+        small.innerText= ''
+        input.style.border = ''
+      }, 2000)
+    }
+
+
+function ipAddressCheck(input)
+{
+   var regEx = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
+
+   if(input.value.match(regEx))
+     {
+      return true;
+     }
+   else
+     {
+     setError(input, "Please enter a valid ip Address.");
+     return false;
+     }
+}    

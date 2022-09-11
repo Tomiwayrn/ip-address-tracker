@@ -13,9 +13,9 @@ body{
 
 header {
     color: white;
-    background: url('./images/pattern-bg.png') top  right no-repeat  ;
+    background: url('./images/pattern-bg.png')   right no-repeat  ;
     width: 100vw;
-    height: 31vh;
+    height: 28vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -27,7 +27,14 @@ form{
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    gap: 1px;
+    position: relative;
+}
+
+small{
+    position: absolute;
+    top: -30%;
+    z-index: 10;
 }
 
 #input {
@@ -37,6 +44,7 @@ form{
     max-width: 800px;
     font-family: inherit;
     border: none;
+    margin-top: 5px;
     border-radius: 15px 0px 0px 15px;
 
 
@@ -47,17 +55,19 @@ form{
 }
 
 .btn {
+    display: flex;
     border: none;
     background: none;
     background: hsl(0, 0%, 17%);
     padding: 20px 23px;
     border-radius: 0px 15px 15px 0px;
-    transform: translateX(-10%);
+
 }
 
 .btn:hover {
     cursor: pointer;
     opacity: .6;
+    transition: .5s ease-in;
 }
 
 .user-info {
@@ -79,22 +89,20 @@ form{
 .container > h3 {
     margin-top: .1rem;
     margin-bottom: 0rem;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-#map {
-    z-index: -1;
-}
 
 .container > h6 {
     color: hsl(0, 0%, 59%);
-    margin: .7rem;
+    margin: .5rem;
     text-transform: uppercase;
     font-weight: 500;
 }
 
 #map{
     height: 65vh;
+    z-index: -1;
     width: 100vw;
 }
 
